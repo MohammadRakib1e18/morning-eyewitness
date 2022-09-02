@@ -5,9 +5,9 @@ let loadCategories = () => {
         .then((data) => displayCategories(data.data.news_category));
 };
 
-let displayCategories = (newCatetories) => {
+let displayCategories = (newsCategories) => {
     let newsCategoriesContainer = document.getElementById("news-categories");
-    newCatetories.forEach((news) => {
+    newsCategories.forEach((news) => {
         let span = document.createElement("span");
 
         span.className = "news-category";
@@ -48,28 +48,30 @@ let displaySelectedCategoryNews = (newsPosts) => {
     selectedNewsContainer.innerHTML="";
 
     newsPosts = getPopularPosts([...newsPosts]);
-    
+
     newsPosts.forEach(post => {
         let article = document.createElement('article');
-        article.className='d-flex mx-3 bg-info bg-opacity-10 mb-4 px-4 py-3';
+        article.className='d-flex mx-3 single-post mb-4 px-4 py-4';
 
         article.innerHTML = `
             <div class="news-thumbnail">
                 <img  src="${post.thumbnail_url?post.thumbnail_url:image_url}"  alt="">
             </div>
-            <section class=" ms-3">
-                <h2>${post.title}</h2>
-                <p>${post.details}</p>
-                <div class="d-flex justify-content-between align-items-center">
-                    <div class="author w-25 d-flex gap-2">
-                        <img src="${post.author.img}" class="w-25" alt="">
-                        <div class="d-flex flex-column">
+            <section class=" ms-3 d-flex flex-column justify-content-between">
+                <div>
+                    <h2 class="fw-bolder">${post.title}</h2>
+                    <p class="text-muted">${post.details}</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center  text-muted">
+                    <div class="author d-flex align-items-center gap-2">
+                        <img src="${post.author.img}" class="" alt="">
+                        <div class="d-flex flex-column text-muted fs-6">
                             <span>${post.author.name?post.author.name:"Anonymous"}</span>
-                            <span>${post.author.published_date?post.author.published_date:"unknown published date"}</span>
+                            <span><i class="fas fa-calendar-alt me-1"></i>${post.author.published_date?post.author.published_date:"Coming soon!"}</span>
                         </div>
                     </div>
-                    <div>${post.total_view}</div>
-                    <div>${post.rating.badge}</div>
+                    <div class="fw-bolder fs-6"><i class="fa fa-regular fa-eye me-2"></i>${post.total_view?post.total_view:5}M</div>
+                    <div>${post.rating?.badge}</div>
                 </div>
             </section>
         `
