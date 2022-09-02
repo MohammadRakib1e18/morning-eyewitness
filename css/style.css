@@ -36,14 +36,10 @@ nav img {
     padding: 3px 10px;
     border-radius: 5px;
 }
-.news-categories .news-category:hover{
-    background-image: linear-gradient(135deg, #09265c 20%, #4a62cf);
+#active, .news-categories .news-category:hover{
+    background-image: linear-gradient(135deg, #133d8bea 20%, #4a69f3e3);
     color: white;
     cursor: pointer;
-}
-#active{
-    background-image: linear-gradient(135deg, #09265c 20%, #4a62cf);
-    color: white;
 }
 
 
