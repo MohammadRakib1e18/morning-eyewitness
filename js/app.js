@@ -49,19 +49,21 @@ let displaySelectedCategoryNews = (newsPosts) => {
 
     newsPosts.forEach(post => {
         let article = document.createElement('article');
-        article.className='d-flex mx-3 bg-info bg-opacity-10 p-3';
+        article.className='d-flex mx-3 bg-info bg-opacity-10 mb-4 px-4 py-3';
 
         article.innerHTML = `
-            <img src="${post.thumbnail_url}" class="w-25 img-fluid"  alt="">
-            <section class="ms-2 w-75">
+            <div class="news-thumbnail">
+                <img  src="${post.thumbnail_url?post.thumbnail_url:image_url}"  alt="">
+            </div>
+            <section class=" ms-3">
                 <h2>${post.title}</h2>
                 <p>${post.details}</p>
                 <div class="d-flex justify-content-between align-items-center">
                     <div class="author w-25 d-flex gap-2">
                         <img src="${post.author.img}" class="w-25" alt="">
                         <div class="d-flex flex-column">
-                            <span>${post.author.name}</span>
-                            <span>${post.author.published_date}</span>
+                            <span>${post.author.name?post.author.name:"Anonymous"}</span>
+                            <span>${post.author.published_date?post.author.published_date:"unknown published date"}</span>
                         </div>
                     </div>
                     <div>${post.total_view}</div>
