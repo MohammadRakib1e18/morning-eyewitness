@@ -47,6 +47,8 @@ let displaySelectedCategoryNews = (newsPosts) => {
     let selectedNewsContainer = document.getElementById('news-container');
     selectedNewsContainer.innerHTML="";
 
+    newsPosts = getPopularPosts([...newsPosts]);
+    
     newsPosts.forEach(post => {
         let article = document.createElement('article');
         article.className='d-flex mx-3 bg-info bg-opacity-10 mb-4 px-4 py-3';
@@ -73,6 +75,13 @@ let displaySelectedCategoryNews = (newsPosts) => {
         `
         selectedNewsContainer.appendChild(article);
     })
+};
+
+// sort the posts by Total Views
+let getPopularPosts = (posts) => {
+    return posts.sort(function (a, b) {
+        return b.total_view - a.total_view;
+    });
 };
 
 loadCategories();
