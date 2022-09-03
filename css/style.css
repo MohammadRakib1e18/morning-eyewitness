@@ -95,3 +95,14 @@ footer{
 .modal-heading{
     border-bottom: 1px solid rgb(51, 51, 51);
 }
+.no-found{
+    padding: 8px 0;
+    background-image: linear-gradient(
+        135deg,
+        rgb(27, 38, 54) 30%,
+        rgb(55, 111, 196)
+    );
+    border-radius: 5px;
+    color: rgb(212, 18, 18);
+    font-weight: 600;
+}

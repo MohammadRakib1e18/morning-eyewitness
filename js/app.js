@@ -84,9 +84,9 @@ let addToModal = (data) => {
             </div>
             <div class="d-flex flex-column text-muted w-50 text-center fw-bolder fs-6 align-items-end">
                     
-            <i class="fa fa-regular fa-eye me-2"></i>${
+            <span><i class="fa fa-regular fa-eye me-2"></i>${
                 data.total_view ? data.total_view : 5
-            }M
+            }M</span>
             <span>Today's Pick: ${picked}</span>
             <span>Trending: ${trending}</span>
             </div>
@@ -131,6 +131,15 @@ let displaySelectedCategoryNews = (newsPosts) => {
         "( " + newsPostCounter + " )";
     let selectedNewsContainer = document.getElementById("news-container");
     selectedNewsContainer.innerHTML = "";
+
+    if(!newsPostCounter){
+        selectedNewsContainer.innerHTML=`
+        <div class=" w-75 mx-auto">    
+            <img src="images/notFound.png" class="mt-3 w-25 d-block mx-auto">
+            <h3 class="no-found text-center text-danger">Sorry! No data found</h3>
+        </div>
+        `
+    }
 
     newsPosts = getPopularPosts([...newsPosts]);
 
