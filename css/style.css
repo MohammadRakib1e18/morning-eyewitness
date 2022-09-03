@@ -67,3 +67,7 @@ nav img {
     border: 2px solid rgb(214, 213, 213);
     border-radius: 50%;
 }
+
+footer{
+    margin-top: 40vh;
+}

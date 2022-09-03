@@ -53,14 +53,19 @@ let displaySelectedCategoryNews = (newsPosts) => {
         let article = document.createElement('article');
         article.className='d-flex mx-3 single-post mb-4 px-4 py-4';
 
+        let text = post.details.slice(0, 650);
+        if(post.details.length>650){
+            text+=" ...";
+        }
+        
         article.innerHTML = `
             <div class="news-thumbnail">
                 <img  src="${post.thumbnail_url?post.thumbnail_url:image_url}"  alt="">
             </div>
-            <section class=" ms-3 d-flex flex-column justify-content-between">
+            <section class=" ms-4 d-flex flex-column justify-content-between">
                 <div>
                     <h2 class="fw-bolder">${post.title}</h2>
-                    <p class="text-muted">${post.details}</p>
+                    <p class="text-muted">${text}</p>
                 </div>
                 <div class="d-flex justify-content-between align-items-center  text-muted">
                     <div class="author d-flex align-items-center gap-2">
