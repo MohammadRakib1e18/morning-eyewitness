@@ -21,6 +21,7 @@ let displayCategories = (newsCategories) => {
     });
     toggleSpinner(true);
     document.getElementsByClassName('news-category')[0].setAttribute('id', 'active');
+    document.getElementById("selected-category").innerText = document.getElementsByClassName('news-category')[0].innerText;
     fetchCategoryBasedData("01");
 };
 
@@ -77,7 +78,7 @@ let addToModal = (data) => {
                 <img src="${data.author.img}" class="" alt="">
                 <div class="d-flex flex-column text-muted fs-6">
                     <span><i class="fa fa-solid fa-user me-1"></i>${
-                        data.author.name ? data.author.name : "Anonymous"
+                        data.author.name ? data.author.name : " not found!"
                     }</span>
                     <span><i class="fas fa-calendar-alt me-1"></i>${
                         data.author.published_date
@@ -89,8 +90,8 @@ let addToModal = (data) => {
             <div class="d-flex flex-column text-muted w-50 text-center fw-bolder fs-6 align-items-end">
                     
             <span><i class="fa fa-regular fa-eye me-2"></i>${
-                data.total_view ? data.total_view : 5
-            }M</span>
+                data.total_view ? data.total_view : "not found!"
+            }</span>
             <span>Today's Pick: ${picked}</span>
             <span>Trending: ${trending}</span>
             </div>
@@ -151,7 +152,7 @@ let displaySelectedCategoryNews = (newsPosts) => {
 
     newsPosts.forEach((post) => {
         let article = document.createElement("article");
-        article.className = "d-flex mx-3 single-post mb-4 px-4 py-4";
+        article.className = "d-flex flex-md-row flex-column gap-3 mx-3 single-post mb-4 px-4 py-4";
 
         let text = post.details.slice(0, 500);
         if (post.details.length > 500) {
@@ -191,14 +192,14 @@ let displaySelectedCategoryNews = (newsPosts) => {
                         <i class="fas fa-angle-right"></i>
                     </a>
                 </div>
-                <div class="d-flex justify-content-between align-items-center  text-muted">
-                    <div class="author d-flex align-items-center gap-2 mt-3">
+                <div class="d-flex  justify-content-between align-items-center  text-muted">
+                    <div class="author w-50 d-flex align-items-center gap-2 mt-3">
                         <img src="${post.author.img}" class="" alt="">
                         <div class="d-flex flex-column text-muted fs-6">
                             <span><i class="fa fa-solid fa-user me-1"></i>${
                                 post.author.name
                                     ? post.author.name
-                                    : "Anonymous"
+                                    : "not found!"
                             }</span>
                             <span><small><i class="fas fa-calendar-alt me-1"></i>${
                                 post.author.published_date
@@ -207,10 +208,10 @@ let displaySelectedCategoryNews = (newsPosts) => {
                             }</small></span>
                         </div>
                     </div>
-                    <div class="fw-bolder fs-6"><i class="fa fa-regular fa-eye me-2"></i>${
-                        post.total_view ? post.total_view : 5
-                    }M</div>
-                    <div class="text-warning">${ratingText}</div>
+                    <div class="fw-bolder fs-6 mx-3"><i class="fa fa-regular fa-eye me-2"></i>${
+                        post.total_view ? post.total_view : "not found!"
+                    }</div>
+                    <div class="ms-2 text-warning">${ratingText}</div>
                 </div>
             </section>
         `;
