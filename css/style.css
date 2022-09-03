@@ -1,7 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Lora&display=swap");
+/*  Css code  */
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Josefin+Sans&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Merriweather&display=swap");
 
 body {
     margin: 0;
@@ -10,6 +8,7 @@ body {
     box-sizing: border-box;
     font-family: "Poppins", serif;
 }
+/*------------------------------------------------------*/
 nav {
     background-image: linear-gradient(
         135deg,
@@ -28,7 +27,6 @@ nav img {
     margin-left: 10px;
 }
 
-
 .news-categories {
     border-bottom: 2px solid rgb(226, 225, 225);
     display: flex;
@@ -40,6 +38,7 @@ nav img {
     padding: 3px 10px;
     border-radius: 5px;
 }
+/*------------------------------------------------------*/
 #active,
 .news-categories .news-category:hover {
     background-image: linear-gradient(135deg, #133d8bea 20%, #4a69f3e3);
@@ -52,19 +51,22 @@ nav img {
         rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
     border-radius: 15px;
 }
-.category-info{
+.category-info {
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
 }
 
+/*------------------------------------------------------*/
 .single-post {
     background-color: rgba(28, 11, 182, 0.027);
     border-radius: 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+        rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
 }
-.single-post:hover{
-    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+.single-post:hover {
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+        rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .read-more {
@@ -75,7 +77,7 @@ nav img {
     border-radius: 6px;
     cursor: pointer;
 }
-.read-more:hover{
+.read-more:hover {
     color: white;
 }
 .read-more i {
@@ -93,14 +95,15 @@ nav img {
     border-radius: 50%;
 }
 
-footer{
+/*------------------------------------------------------*/
+footer {
     margin-top: 20vh;
 }
 
-.modal-heading{
+.modal-heading {
     border-bottom: 1px solid rgb(51, 51, 51);
 }
-.no-found{
+.no-found {
     padding: 8px 0;
     background-image: linear-gradient(
         135deg,
@@ -112,23 +115,22 @@ footer{
     font-weight: 600;
 }
 
-.hide-spinner{
+.hide-spinner {
     display: none;
 }
-
 
 /* ========================-<Media Quries>-=========================== */
 
 /* Mobile media queries */
 @media screen and (max-width: 688px) {
-    .news-categories{
+    .news-categories {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
     }
-    .category-info{
+    .category-info {
         flex-direction: column;
         justify-content: start;
-        align-items:flex-start;
-        gap:20px;
+        align-items: flex-start;
+        gap: 20px;
     }
 }

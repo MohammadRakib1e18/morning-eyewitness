@@ -1,9 +1,17 @@
+// Load categories
+
 let loadCategories = () => {
     const url = "https://openapi.programming-hero.com/api/news/categories";
+
     fetch(url)
         .then((res) => res.json())
-        .then((data) => displayCategories(data.data.news_category));
+        .then((data) => displayCategories(data.data.news_category))
+        .catch(err => {
+            console.error("There was an error: ", err); // error checking.
+        })
+
 };
+/*------------------------------------------------------*/
 
 let displayCategories = (newsCategories) => {
     
@@ -24,6 +32,7 @@ let displayCategories = (newsCategories) => {
     document.getElementById("selected-category").innerText = document.getElementsByClassName('news-category')[0].innerText;
     fetchCategoryBasedData("01");
 };
+/*------------------------------------------------------*/
 
 let fetchCategoryBasedData = (id) => {
     toggleSpinner(false);
@@ -32,8 +41,14 @@ let fetchCategoryBasedData = (id) => {
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
     fetch(url)
         .then((res) => res.json())
-        .then((data) => displaySelectedCategoryNews(data.data));
+        .then((data) => displaySelectedCategoryNews(data.data))
+        .catch(err => {
+            console.error("There was an error: ", err); //error checking
+        })
 }
+
+/*------------------------------------------------------*/
+// show active button 
 
 let displayButtonClicked = (event) => {
 
@@ -54,6 +69,8 @@ let displayButtonClicked = (event) => {
     
 };
 
+/*------------------------------------------------------*/
+// here is the code to add modal 
 let addToModal = (data) => {
     toggleSpinner(true);
     let modalTitle = document.getElementById("modal-title");
@@ -109,7 +126,7 @@ let addToModal = (data) => {
         </div> 
     `;
 };
-
+/*------------------------------------------------------*/
 let bindEventListenerToShowModal = () => {
     let readMoreButtons = document.getElementsByClassName("read-more");
 
@@ -126,11 +143,15 @@ let bindEventListenerToShowModal = () => {
             let url = `https://openapi.programming-hero.com/api/news/${id}`;
             fetch(url)
                 .then((res) => res.json())
-                .then((data) => addToModal(data.data[0]));
+                .then((data) => addToModal(data.data[0]))
+                .catch(err => {
+                    console.error("There was an error: ", err); // error handling
+                })
         });
     }
 };
 
+/*------------------------------------------------------*/
 let displaySelectedCategoryNews = (newsPosts) => {
     let newsPostCounter = newsPosts.length;
     document.getElementById("result-counter").innerText =
@@ -228,6 +249,10 @@ let getPopularPosts = (posts) => {
     });
 };
 
+/*------------------------------------------------------*/
+// if it's paremeter is false, then spinner shows
+// otherwise, it hides
+
 let toggleSpinner = isHide => {
     let spinner = document.getElementById('spinner');
     if(isHide){
@@ -237,6 +262,7 @@ let toggleSpinner = isHide => {
         spinner.classList.remove('hide-spinner');
     }
 }
+// default functions caller
 
 toggleSpinner(false);
 loadCategories();
