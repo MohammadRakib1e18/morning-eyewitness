@@ -107,7 +107,7 @@ let addToModal = (data) => {
             <div class="d-flex flex-column text-muted w-50 text-center fw-bolder fs-6 align-items-end">
                     
             <span><i class="fa fa-regular fa-eye me-2"></i>${
-                data.total_view ? data.total_view : "not found!"
+                data.total_view ? data.total_view+" M" : "not found!"
             }</span>
             <span>Today's Pick: ${picked}</span>
             <span>Trending: ${trending}</span>
@@ -230,7 +230,7 @@ let displaySelectedCategoryNews = (newsPosts) => {
                         </div>
                     </div>
                     <div class="fw-bolder fs-6 mx-3"><i class="fa fa-regular fa-eye me-2"></i>${
-                        post.total_view ? post.total_view : "not found!"
+                        post.total_view ? post.total_view+" M" : "not found!"
                     }</div>
                     <div class="ms-2 text-warning">${ratingText}</div>
                 </div>
