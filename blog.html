@@ -17,6 +17,7 @@
         />
         <!-- custom stylesheet  -->
         <link rel="stylesheet" href="css/style.css" />
+        <link rel="stylesheet" href="css/blog.css" />
         <!-- favicon -->
         <link
             rel="shortcut icon"
@@ -103,7 +104,6 @@
                                         btn
                                         text-light
                                     "
-                                    href="blog.html"
                                     aria-current="page"
                                     >Blog</a
                                 >
@@ -121,132 +121,44 @@
                 </div>
             </div>
         </nav>
-        
 
-        <section
-            id="news-categories"
-            class="news-categories d-flex justify-content-evenly mt-2 mb-5"
-        ></section>
-        
+        <h2 class="mx-2 mt-4">Daily Blogspot!</h2>
+        <hr>
 
-        <section
-            class="
-                category-info
-                d-flex
-                justify-content-between
-                align-items-end
-                mx-3
-            "
-        >
-            <section>
-                <div
-                    class="
-                        total-category-result
-                        d-flex
-                        justify-content-center
-                        mx-2
-                        py-1
-                        mb-2
-                        fs-6
-                        fw-semibold
-                        text-secondary
-                    "
-                >
-                    Selected Category:<span
-                        id="selected-category"
-                        class="text-danger mx-2"
-                    ></span>
-                </div>
-                <div
-                    class="
-                        total-category-result
-                        d-flex
-                        justify-content-center
-                        mx-2
-                        py-1
-                        fs-6
-                        fw-semibold
-                        text-secondary
-                    "
-                >
-                    Total News Post:<span
-                        id="result-counter"
-                        class="text-danger mx-2"
-                    ></span>
-                </div>
-            </section>
-            <section class="me-4">
-                <span class="me-1 px-2 py-1">Sort By View:</span>
-                <span class="text-muted bg-secondary bg-opacity-10 px-2 py-1"
-                    >Default <i class="fa fa-solid fa-angle-down"></i
-                ></span>
-            </section>
-        </section>
-        <hr />
-        <div
-            
-            class="d-flex justify-content-center align-items-center"
-        >
-            <div id="spinner" class="hide-spinner spinner-border" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
-        <section id="news-container"></section>
-
-        <!-- Modal -->
-        <div
-            class="modal fade"
-            id="exampleModal"
-            data-bs-backdrop="static"
-            tabindex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-        >
-            <div class="modal-dialog">
-                <div
-                    id="modal-content"
-                    class="
-                        bg-dark
-                        modal-content
-                        border border-5 border-secondary
-                    "
-                >
-                    <div id="modal-header" class="modal-header bg-dark">
-                        <div
-                            id="modal-title"
-                            class="modal-title"
-                            id="exampleModalLabel"
-                        ></div>
-                        <button
-                            type="button"
-                            class="btn-close bg-light bg-opacity-10"
-                            data-bs-dismiss="modal"
-                            aria-label="Close"
-                        ></button>
-                    </div>
-                    <div id="modal-body" class="modal-body"></div>
-                    <div class="modal-footer">
-                        <button
-                            type="button"
-                            class="btn btn-secondary"
-                            data-bs-dismiss="modal"
-                        >
-                            Close
-                        </button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+            <article class="container">
+                <h5 class="fw-bold">1: What is the differences between var, let and const?</h5>
+                <p class="ms-5">Before ES6, var was the most used keyword to declare variables. But day by day, developers were facing many problems with 'var' as it hoists declaration at the top. Even it has no block-scope which is most annoying to many developers.</p>
+                <p class="ms-5">
+                    After the innovation of ES6, var has no longer necessity as let and const have better effect. 
+                </p>
+                <p class="ms-5">
+                    Let and Const are almost same withoug one point: the variable declared with let can be reassigned but in case of const, it's impossible.
+                </p>
+            </article>
+            <article class="container">
+                <h5 class="fw-bold">2: What is the differences between Arrow function and Regular function?</h5>
+                <p class="ms-5">There are a lot of ways to declare functins in javascript. One of them is regular function and the other one is arrow function.</p>
+                <p class="ms-5">
+                    A regular function can easily construb objects while an arrow function can't be  used as a constructor
+                </p>
+                <p class="ms-5">
+                    We know, arrow function of just one line expression is called inline arrow function. It returns the value implicitly. It's a special case which doesn't present in regular function. Because, if you omit return statement in regular function, it returns implicitly 'undefined'!
+                </p>
+            </article>
+            <article class="container">
+                <h5 class="fw-bold">1: Why do we use template string?</h5>
+                <p class="ms-5">Template string is very useful.</p>
+                <p class="ms-5">
+                    Generally, we can declare string in 3 ways and one of them is Template string. If you need to use multi-line string, then template string comes forward helping you.
+                </p>
+                <p class="ms-5">
+                    Moreover, it's very common to use dynamic string. So, template string helps to use variables in string and thus makes the strings <dynamic!></dynamic!>
+                </p>
+            </article>
         <!-- footer  -->
         <footer class="container-fluid text-center py-5 bg-dark text-muted">
             <p>Copyright@2022-Morning Eyewitness</p>
             <hr class="w-50 mx-auto" />
         </footer>
-
-        <!-- javascript files  -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"></script>
-
-        <script src="js/app.js"></script>
     </body>
 </html>
