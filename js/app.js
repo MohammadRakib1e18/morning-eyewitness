@@ -6,6 +6,7 @@ let loadCategories = () => {
 };
 
 let displayCategories = (newsCategories) => {
+    
     let newsCategoriesContainer = document.getElementById("news-categories");
     newsCategories.forEach((news) => {
         let span = document.createElement("span");
@@ -16,14 +17,17 @@ let displayCategories = (newsCategories) => {
         span.onclick = displayButtonClicked;
 
         newsCategoriesContainer.appendChild(span);
+       
     });
+    toggleSpinner(true);
     document.getElementsByClassName('news-category')[0].setAttribute('id', 'active');
     fetchCategoryBasedData("01");
 };
 
 let fetchCategoryBasedData = (id) => {
+    toggleSpinner(false);
+
     // fetched category-based data
-    console.log(id);
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
     fetch(url)
         .then((res) => res.json())
@@ -50,7 +54,7 @@ let displayButtonClicked = (event) => {
 };
 
 let addToModal = (data) => {
-    console.log(data);
+    toggleSpinner(true);
     let modalTitle = document.getElementById("modal-title");
     let picked="";
     let trending="";
@@ -105,7 +109,7 @@ let addToModal = (data) => {
     `;
 };
 
-let bindEventListener = () => {
+let bindEventListenerToShowModal = () => {
     let readMoreButtons = document.getElementsByClassName("read-more");
 
     for (let readMore of readMoreButtons) {
@@ -114,6 +118,7 @@ let bindEventListener = () => {
 
         readMore.addEventListener("click", function (event) {
             event.preventDefault();
+            toggleSpinner(false);
 
             let button = event.target;
             let id = button.getAttribute("id");
@@ -131,7 +136,7 @@ let displaySelectedCategoryNews = (newsPosts) => {
         "( " + newsPostCounter + " )";
     let selectedNewsContainer = document.getElementById("news-container");
     selectedNewsContainer.innerHTML = "";
-
+    
     if(!newsPostCounter){
         selectedNewsContainer.innerHTML=`
         <div class=" w-75 mx-auto">    
@@ -140,6 +145,7 @@ let displaySelectedCategoryNews = (newsPosts) => {
         </div>
         `
     }
+    toggleSpinner(true);
 
     newsPosts = getPopularPosts([...newsPosts]);
 
@@ -211,7 +217,7 @@ let displaySelectedCategoryNews = (newsPosts) => {
         selectedNewsContainer.appendChild(article);
     });
 
-    bindEventListener();
+    bindEventListenerToShowModal();
 };
 
 // sort the posts by Total Views
@@ -221,4 +227,15 @@ let getPopularPosts = (posts) => {
     });
 };
 
+let toggleSpinner = isHide => {
+    let spinner = document.getElementById('spinner');
+    if(isHide){
+        spinner.classList.add('hide-spinner');
+    }
+    else{
+        spinner.classList.remove('hide-spinner');
+    }
+}
+
+toggleSpinner(false);
 loadCategories();

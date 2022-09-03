@@ -28,9 +28,7 @@ nav img {
     margin-left: 10px;
 }
 
-#spinner{
-    height: 60vh;
-}
+
 .news-categories {
     border-bottom: 2px solid rgb(226, 225, 225);
 }
@@ -89,7 +87,7 @@ nav img {
 }
 
 footer{
-    margin-top: 40vh;
+    margin-top: 20vh;
 }
 
 .modal-heading{
@@ -105,4 +103,8 @@ footer{
     border-radius: 5px;
     color: rgb(212, 18, 18);
     font-weight: 600;
+}
+
+.hide-spinner{
+    display: none;
 }
