@@ -118,6 +118,9 @@ footer {
 .hide-spinner {
     display: none;
 }
+.author{
+    width: 50%;
+}
 
 /* ========================-<Media Quries>-=========================== */
 
@@ -125,12 +128,21 @@ footer {
 @media screen and (max-width: 688px) {
     .news-categories {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
     .category-info {
         flex-direction: column;
         justify-content: start;
         align-items: flex-start;
         gap: 20px;
+    }
+    #title-text{
+        display: none;
+    }
+    .author, .total-view,.rating-text{
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin-bottom: 10px;
     }
 }

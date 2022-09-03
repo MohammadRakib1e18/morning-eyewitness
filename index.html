@@ -24,20 +24,22 @@
             type="image/x-icon"
         />
     </head>
-    <body>
+    <body id="top">
         <!-- navbar  -->
         <nav
-            class="navbar navbar-expand-lg navbar-dark py-1"
+            class="navbar navbar-expand-lg sticky-top navbar-dark py-1"
             id="navbar"
             aria-label="Offcanvas navbar large"
         >
             <div class="container-fluid">
                 <a class="navbar-brand"
+                href="index.html"
                     ><img
                         src="images/navbar-img.jpg"
                         alt=""
                         class="me-2"
-                    />Morning Eyewitness</a
+                    /><span id="title-text">Morning
+                        Eyewitness</span></a
                 >
                 <button
                     class="navbar-toggler"
@@ -73,7 +75,7 @@
                                         btn
                                         text-light
                                     "
-                                    href="index.html"
+                                    href="#top"
                                     aria-current="page"
                                     >Home</a
                                 >
@@ -206,7 +208,7 @@
                         ></div>
                         <button
                             type="button"
-                            class="btn-close bg-light bg-opacity-10"
+                            class="btn-close bg-light bg-opacity-75"
                             data-bs-dismiss="modal"
                             aria-label="Close"
                         ></button>

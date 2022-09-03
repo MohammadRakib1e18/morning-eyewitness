@@ -111,6 +111,7 @@ let addToModal = (data) => {
             }</span>
             <span>Today's Pick: ${picked}</span>
             <span>Trending: ${trending}</span>
+            <span>Rating: ${data.rating.number}(${data.rating.badge})</span>
             </div>
         </div>
     `
@@ -180,6 +181,7 @@ let displaySelectedCategoryNews = (newsPosts) => {
             text += " ...";
         }
 
+        // calculate rating-star based on the rating.
         let ratingText = "";
         let gotRating = post.rating.number;
         if (!post.rating.number) gotRating = 3.5;
@@ -213,8 +215,8 @@ let displaySelectedCategoryNews = (newsPosts) => {
                         <i class="fas fa-angle-right"></i>
                     </a>
                 </div>
-                <div class="d-flex  justify-content-between align-items-center  text-muted">
-                    <div class="author w-50 d-flex align-items-center gap-2 mt-3">
+                <div class="d-flex flex-md-row flex-column justify-content-between  align-items-center  text-muted">
+                    <div class="author d-flex align-items-center gap-2 mt-3">
                         <img src="${post.author.img}" class="" alt="">
                         <div class="d-flex flex-column text-muted fs-6">
                             <span><i class="fa fa-solid fa-user me-1"></i>${
@@ -229,10 +231,10 @@ let displaySelectedCategoryNews = (newsPosts) => {
                             }</small></span>
                         </div>
                     </div>
-                    <div class="fw-bolder fs-6 mx-3"><i class="fa fa-regular fa-eye me-2"></i>${
+                    <div class="total-view fw-bolder fs-6 mx-3"><i class="fa fa-regular fa-eye me-2"></i>${
                         post.total_view ? post.total_view+" M" : "not found!"
                     }</div>
-                    <div class="ms-2 text-warning">${ratingText}</div>
+                    <div class="rating-text ms-2 text-warning">${ratingText}</div>
                 </div>
             </section>
         `;
