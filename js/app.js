@@ -17,9 +17,21 @@ let displayCategories = (newsCategories) => {
 
         newsCategoriesContainer.appendChild(span);
     });
+    document.getElementsByClassName('news-category')[0].setAttribute('id', 'active');
+    fetchCategoryBasedData("01");
 };
 
+let fetchCategoryBasedData = (id) => {
+    // fetched category-based data
+    console.log(id);
+    const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
+    fetch(url)
+        .then((res) => res.json())
+        .then((data) => displaySelectedCategoryNews(data.data));
+}
+
 let displayButtonClicked = (event) => {
+
     let button = event.target;
     let id = button.getAttribute("category_id");
     let totalButtons = document.getElementsByClassName("news-category");
@@ -33,26 +45,64 @@ let displayButtonClicked = (event) => {
     document.getElementById("selected-category").innerText =
         event.target.innerText;
 
-    // fetched category-based data
-    const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
-    fetch(url)
-        .then((res) => res.json())
-        .then((data) => displaySelectedCategoryNews(data.data));
+    fetchCategoryBasedData(id);
+    
 };
 
 let addToModal = (data) => {
     console.log(data);
-    let modalTitle = document.getElementById('modal-title');
-    modalTitle.innerText = data.title;
+    let modalTitle = document.getElementById("modal-title");
+    let picked="";
+    let trending="";
+    if(data.others_info.is_today_pick){
+        picked="<i class='text-success fa fa-regular fa-check'></i>";
+    }
+    else{
+        picked="<span class='ms-2 text-danger'>X</span>";
+    }
+    if(data.others_info.is_trending){
+        trending="<i class='text-success fa fa-regular fa-check'></i>";
+    }
+    else{
+        trending="<span class='ms-2 text-danger'>X</span>";
+    }
+    modalTitle.innerHTML=`
+        <h3 class="text-info modal-heading"><span class="text-muted text-decoration-underline">Head line:</span> ${data.title}</h3>
+        <div class="d-flex justify-content-between align-items-center">
+            <div class="w-75 author d-flex align-items-center gap-2 mt-3">
+                <img src="${data.author.img}" class="" alt="">
+                <div class="d-flex flex-column text-muted fs-6">
+                    <span><i class="fa fa-solid fa-user me-1"></i>${
+                        data.author.name ? data.author.name : "Anonymous"
+                    }</span>
+                    <span><i class="fas fa-calendar-alt me-1"></i>${
+                        data.author.published_date
+                            ? data.author.published_date
+                            : "Coming soon!"
+                    }</span>
+                </div>
+            </div>
+            <div class="d-flex flex-column text-muted w-50 text-center fw-bolder fs-6 align-items-end">
+                    
+            <i class="fa fa-regular fa-eye me-2"></i>${
+                data.total_view ? data.total_view : 5
+            }M
+            <span>Today's Pick: ${picked}</span>
+            <span>Trending: ${trending}</span>
+            </div>
+        </div>
+    `
 
-    let modalBody = document.getElementById('modal-body');
+    let modalBody = document.getElementById("modal-body");
     modalBody.innerHTML = `
-        <img class="w-100 border border-4 border-secondary" src="${data.thumbnail_url ? data.thumbnail_url : data.image_url}" alt="" />
+        <img class="w-100 border border-4 border-secondary" src="${
+            data.thumbnail_url ? data.thumbnail_url : data.image_url
+        }" alt="" />
+
         <div class="bg-secondary text-light border-secondary p-2">
             ${data.details}
         </div> 
-    `
-
+    `;
 };
 
 let bindEventListener = () => {
@@ -66,11 +116,11 @@ let bindEventListener = () => {
             event.preventDefault();
 
             let button = event.target;
-            let id=button.getAttribute('id');
+            let id = button.getAttribute("id");
             let url = `https://openapi.programming-hero.com/api/news/${id}`;
             fetch(url)
-            .then(res => res.json())
-            .then(data => addToModal(data.data[0]));
+                .then((res) => res.json())
+                .then((data) => addToModal(data.data[0]));
         });
     }
 };
